@@ -1,0 +1,8 @@
+services:
+    mongo:
+        image: mongo
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: leaky
+            MONGO_INITDB_ROOT_PASSWORD: bucket
+        ports:
+            - "27017:27017"
