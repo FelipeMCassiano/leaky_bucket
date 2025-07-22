@@ -1,11 +1,9 @@
 import Koa from "koa";
 import bodyParser from "koa-bodyparser";
-import { router } from "./routes/routes";
+import { router } from "./routes/router";
 const app = new Koa();
 
 app.use(bodyParser());
-app.use(router.routes());
+app.use(router.routes()).use(router.allowedMethods());
 
-async function run() {
-    app.listen(process.env.APP_PORT ?? 3000);
-}
+app.listen(process.env.APP_PORT ?? 3000);

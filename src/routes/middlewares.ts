@@ -18,6 +18,7 @@ export const authMiddleware = async (
 ) => {
     try {
         const token = ctx.header.authorization?.split(" ")[1]!;
+        console.log("token ", token);
         const decoded: any = jwt.verify(token, SECRET);
         const user = await findUserById(decoded.userId);
         if (!user) {
@@ -38,6 +39,7 @@ export const validateTokens = async (
     next: Next
 ) => {
     const user: IUser = ctx.state.user;
+    console.log("user from validatetokens ", user);
 
     const refilledUser = await refillUserTokens(user);
 
